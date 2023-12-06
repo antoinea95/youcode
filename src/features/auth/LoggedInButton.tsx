@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Session } from "next-auth";
 import { LogoutButton } from "./LogoutButton";
-import { LogOut } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,6 +20,7 @@ import {
   AlertDialogHeader,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import Link from "next/link";
 
 export type LoggedInProps = {
   user: Session["user"];
@@ -44,6 +45,11 @@ export const LoggedInButton = (props: LoggedInProps) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
+                <DropdownMenuItem asChild>
+                  <Link href="./account">
+                    <User className="mr-2" size={12} /> Account
+                  </Link>
+                </DropdownMenuItem>
             <AlertDialogTrigger>
             <DropdownMenuItem>
             <LogOut className="mr-2" size={12} /> Logout
